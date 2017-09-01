@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using LiteApp_API.DB;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,57 @@ namespace MVC_API.Controllers
             public string ShiShu { get; set; }
             public string BeiZhu { get; set; }
         }
-        public string SaveEntry(string data)
+        /// <summary>
+        /// 保存和修改单条记货记录
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public string Save(string data)
         {
             try
             {
-                using (var ctx = new DB.APIContextDataContext())
+                using (var ctx = new APIContextDataContext())
                 {
-                    var ent = JsonConvert.DeserializeObject<DB.Entries>(data);
-                    ctx.Entries.InsertOnSubmit(ent);
-                    ctx.SubmitChanges();
-                    return JsonConvert.SerializeObject(new
+                    var ent = JsonConvert.DeserializeObject<Entries>(data);
+                    bool update = ent.Id == 0 ? false : true;
+                    if (update)
                     {
-                        res = "OK",
-                        msg = "保存成功"
-                    });
+                        var oldEnt = ctx.Entries.Where(m => m.Id == ent.Id).First();
+                        //oldEnt.Id = ent.Id;
+                        //oldEnt.UserId = ent.UserId;
+                        oldEnt.Date = ent.Date;
+                        oldEnt.LiuShuiH = ent.LiuShuiH;
+                        oldEnt.ChiMa = ent.ChiMa;
+                        oldEnt.ShiShu = ent.ShiShu;
+                        oldEnt.BeiZhu = ent.BeiZhu;
+                        return JsonConvert.SerializeObject(new
+                        {
+                            res = "OK",
+                            msg = "修改成功"
+                        });
+                    }
+                    else
+                    {
+
+                        if (string.IsNullOrEmpty(ent.UserId.ToString()) ||
+                            string.IsNullOrEmpty(ent.Date) ||
+                            string.IsNullOrEmpty(ent.LiuShuiH) ||
+                            string.IsNullOrEmpty(ent.ShiShu))
+                        {
+                            return JsonConvert.SerializeObject(new
+                            {
+                                res = "FAILD",
+                                msg = "保存失败," + JsonConvert.SerializeObject(ent)
+                            });
+                        }
+                        ctx.Entries.InsertOnSubmit(ent);
+                        ctx.SubmitChanges();
+                        return JsonConvert.SerializeObject(new
+                        {
+                            res = "OK",
+                            msg = "保存成功"
+                        });
+                    }
                 }
             }
             catch (Exception e)
@@ -46,30 +84,19 @@ namespace MVC_API.Controllers
             }
 
         }
-        public string GetEntryList()
-        {
-            try
-            {
-                using (var ctx = new DB.APIContextDataContext())
-                {
-                    return JsonConvert.SerializeObject(ctx.Entries.ToList());
-                }
-            }
-            catch (Exception e)
-            {
-                return JsonConvert.SerializeObject(new
-                {
-                    res = "ERROR",
-                    msg = e.Message
-                });
-            }
-        }
-        public string QueryEntryList(string search, int page, int rows)
+        /// <summary>
+        /// 查询记货记录
+        /// </summary>
+        /// <param name="search"></param>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        public string QueryList(string search, int page, int rows)
         {
             try
             {
                 var entSearch = JsonConvert.DeserializeObject<searchEntity>(search);
-                using (var ctx = new DB.APIContextDataContext())
+                using (var ctx = new APIContextDataContext())
                 {
                     var query = ctx.Entries.AsQueryable();
                     if (!string.IsNullOrEmpty(entSearch.Id))
@@ -121,11 +148,16 @@ namespace MVC_API.Controllers
                 });
             }
         }
-        public string DelEntryByID(int ID)
+        /// <summary>
+        /// 删除一条记货记录
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public string DelByID(int ID)
         {
             try
             {
-                using (var ctx = new DB.APIContextDataContext())
+                using (var ctx = new APIContextDataContext())
                 {
                     var del = ctx.Entries.Where(m => m.Id == ID).First();
                     ctx.Entries.DeleteOnSubmit(del);

@@ -53,6 +53,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -115,7 +116,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="DB\APIContext.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
