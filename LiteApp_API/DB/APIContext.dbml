@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="APIContext" Class="APIContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=116.62.196.228;Initial Catalog=APIContext;User ID=sa;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="APIContextConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Entries" Member="Entries">
+    <Type Name="Entries">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="LiuShuiH" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChiMa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ShiShu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="BeiZhu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="WX_OpenID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="XingMing" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ShouJiH" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="GongZhong" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
