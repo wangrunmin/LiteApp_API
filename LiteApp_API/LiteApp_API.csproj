@@ -134,6 +134,7 @@
     <None Include="DB\APIContext.dbml.layout">
       <DependentUpon>APIContext.dbml</DependentUpon>
     </None>
+    <None Include="Properties\PublishProfiles\LiteApp_API.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
