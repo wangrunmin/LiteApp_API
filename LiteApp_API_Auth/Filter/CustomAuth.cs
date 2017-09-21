@@ -19,9 +19,9 @@ namespace LiteApp_API_Auth.Filter
                 {
                     sessionid = filterContext.HttpContext.Request.Cookies["session"].Values["sid"];
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    throw new Exception("用户尚未登录" + e.Message);
+                    throw new Exception("用户尚未登录");
                 }
                 using (var ctx = new SSOContext())
                 {
