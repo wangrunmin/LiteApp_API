@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace LiteApp_API_Auth.DB
+namespace SSO.Model
 {
-    public class SessionContext : DbContext
-    {
-        public DbSet<Session> Sessions { get; set; }
-        public DbSet<User> Users { get; set; }
-    }
     public class Session
     {
         [Key]
@@ -19,10 +14,5 @@ namespace LiteApp_API_Auth.DB
         public string UserId { get; set; }
         public DateTime ExpireTime { get; set; }
         public DateTime CreateTime { get; set; }
-    }
-    public class User
-    {
-        public string Id { get; set; }
-        public string Name { get; set; }
     }
 }

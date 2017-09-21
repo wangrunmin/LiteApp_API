@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteApp_API", "LiteApp_API\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiteApp_API_Auth", "LiteApp_API_Auth\LiteApp_API_Auth.csproj", "{7F951A88-9419-42D7-9058-6127915DACDF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SSO", "SSO\SSO.csproj", "{BDE7B91B-EE3A-43B4-893B-FB413650A141}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7F951A88-9419-42D7-9058-6127915DACDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F951A88-9419-42D7-9058-6127915DACDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F951A88-9419-42D7-9058-6127915DACDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE7B91B-EE3A-43B4-893B-FB413650A141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE7B91B-EE3A-43B4-893B-FB413650A141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE7B91B-EE3A-43B4-893B-FB413650A141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE7B91B-EE3A-43B4-893B-FB413650A141}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

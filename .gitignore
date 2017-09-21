@@ -241,5 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
-# WebConfig
-*/Web.config
+
